@@ -20,5 +20,6 @@ CREATE TABLE ratings (
     cake_price MEDIUMINT(10),
     overall_score TINYINT(4),
     visit_date DATE,
+    PRIMARY KEY (rating_id),
     FOREIGN KEY (cafe_id) REFERENCES cafes (cafe_id)
 );

@@ -4,5 +4,11 @@
   "main": "index.js",
   "repository": "https://github.com/senditholmes/coffee-picker.git",
   "author": "Daniel Holmes <senditholmes@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prisma": "^5.12.1"
+  },
+  "dependencies": {
+    "@prisma/client": "5.12.1"
+  }
 }
