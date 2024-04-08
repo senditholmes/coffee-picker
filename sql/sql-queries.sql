@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS "ratings" (
     atmosphere TEXT,
     service TEXT,
     score INT,
-    PRIMARY KEY (rating_id),
     FOREIGN KEY (cafe_id) REFERENCES cafes(cafe_id)
 );
 CREATE TABLE IF NOT EXISTS "price" (

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Header } from "./ui/Header";
+import { Footer } from "./ui/Footer"
+import { Container } from "postcss";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,18 +14,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div id="container" className="flex justify-center content-center items-center w-100 h-screen">
-          {children} 
+        <div className=" flex flex-col ml-20 mr-20 h-svh content-center justify-center">
+          <Header/>
+              {children} 
+          <Footer/>
         </div>
       </body>
     </html>
   );
-
-
 }
