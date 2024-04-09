@@ -1,9 +1,9 @@
 INSERT INTO cafes (
-        name,
+        cafeName,
         address,
-        address_link,
-        opening_hour,
-        closing_hour
+        addressLink,
+        openingHour,
+        closingHour
     )
 VALUES (
         'slowD',

@@ -1,25 +1,36 @@
-CREATE DATABASE coffee_picker_data;
-USE coffee_picker_data;
+CREATE DATABASE coffee_picker_app_data;
+USE coffee_picker_app_data;
 
 CREATE TABLE cafes (
-    cafe_id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(30),
+    cafeId INT NOT NULL AUTO_INCREMENT,
+    cafeName VARCHAR(30) UNIQUE,
     address VARCHAR(30),
-    address_link VARCHAR(200),
-    opening_hour TIME,
-    closing_hour TIME,
-    PRIMARY KEY (cafe_id)
+    addressLink VARCHAR(200),
+    openingHour TIME,
+    closingHour TIME,
+    PRIMARY KEY (cafeId)
 );
+
+CREATE TABLE users (
+    userId INT AUTO_INCREMENT,
+    userName VARCHAR(30),
+    email VARCHAR(50),
+    password VARCHAR(30),
+    PRIMARY KEY (userId)
+);
+
 CREATE TABLE ratings (
-    rating_id INT AUTO_INCREMENT,
-    cafe_id INT NOT NULL,
-    taste VARCHAR(30),
+    ratingId INT AUTO_INCREMENT,
+    cafeId INT NOT NULL,
+    userId INT NOT NULL,
     atmosphere VARCHAR(30),
     service VARCHAR(30),
-    americano_price MEDIUMINT(10),
-    cake_price MEDIUMINT(10),
-    overall_score TINYINT(4),
-    visit_date DATE,
-    PRIMARY KEY (rating_id),
-    FOREIGN KEY (cafe_id) REFERENCES cafes (cafe_id)
+    taste VARCHAR(30),
+    americanoPrice MEDIUMINT(10),
+    cakePrice MEDIUMINT(10),
+    overallScore TINYINT(4),
+    visitDate DATE,
+    PRIMARY KEY (ratingId),
+    FOREIGN KEY (cafeId) REFERENCES cafes (cafeId),
+    FOREIGN KEY (userId) REFERENCES users (userId)
 );

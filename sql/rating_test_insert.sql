@@ -1,14 +1,16 @@
 INSERT INTO ratings (
-        cafe_id,
-        taste,
+        cafeId,
+        userId,
         atmosphere,
         service,
-        americano_price,
-        cake_price,
-        overall_score,
-        visit_date
+        taste,
+        americanoPrice,
+        cakePrice,
+        overallScore,
+        visitDate
     )
 VALUES (
+        1,
         1,
         "Sweet",
         "Relaxing",

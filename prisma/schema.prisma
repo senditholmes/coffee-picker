@@ -8,26 +8,37 @@ datasource db {
 }
 
 model cafes {
-  cafe_id      Int       @id @default(autoincrement())
-  name         String?   @db.VarChar(30)
-  address      String?   @db.VarChar(30)
-  address_link String?   @db.VarChar(200)
-  opening_hour DateTime? @db.Time(0)
-  closing_hour DateTime? @db.Time(0)
-  ratings      ratings[]
+  cafeId      Int       @id @default(autoincrement())
+  cafeName    String?   @unique(map: "cafeName") @db.VarChar(30)
+  address     String?   @db.VarChar(30)
+  addressLink String?   @db.VarChar(200)
+  openingHour DateTime? @db.Time(0)
+  closingHour DateTime? @db.Time(0)
+  ratings     ratings[]
 }
 
 model ratings {
-  rating_id       Int       @id @default(autoincrement())
-  cafe_id         Int
-  taste           String?   @db.VarChar(30)
-  atmosphere      String?   @db.VarChar(30)
-  service         String?   @db.VarChar(30)
-  americano_price Int?      @db.MediumInt
-  cake_price      Int?      @db.MediumInt
-  overall_score   Int?      @db.TinyInt
-  visit_date      DateTime? @db.Date
-  cafes           cafes     @relation(fields: [cafe_id], references: [cafe_id], onDelete: NoAction, onUpdate: NoAction, map: "ratings_ibfk_1")
+  ratingId       Int       @id @default(autoincrement())
+  cafeId         Int
+  userId         Int
+  atmosphere     String?   @db.VarChar(30)
+  service        String?   @db.VarChar(30)
+  taste          String?   @db.VarChar(30)
+  americanoPrice Int?      @db.MediumInt
+  cakePrice      Int?      @db.MediumInt
+  overallScore   Int?      @db.TinyInt
+  visitDate      DateTime? @db.Date
+  cafes          cafes     @relation(fields: [cafeId], references: [cafeId], onDelete: NoAction, onUpdate: NoAction, map: "ratings_ibfk_1")
+  users          users     @relation(fields: [userId], references: [userId], onDelete: NoAction, onUpdate: NoAction, map: "ratings_ibfk_2")
 
-  @@index([cafe_id], map: "cafe_id")
+  @@index([cafeId], map: "cafeId")
+  @@index([userId], map: "userId")
+}
+
+model users {
+  userId   Int       @id @default(autoincrement())
+  userName String?   @db.VarChar(30)
+  email    String?   @db.VarChar(50)
+  password String?   @db.VarChar(30)
+  ratings  ratings[]
 }
