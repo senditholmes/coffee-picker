@@ -16,5 +16,11 @@ const config: Config = {
     },
   },
   plugins: [],
+
+  "editor.quickSuggestions": {
+    strings: true,
+  },
+  "css.validate": false,
+  "editor.inlineSuggest.enabled": true,
 };
 export default config;
